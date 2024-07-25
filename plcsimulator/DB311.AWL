@@ -1,0 +1,248 @@
+﻿DATA_BLOCK "A/V311 CPLC  --> A/V Server"
+{ S7_Optimized_Access := 'FALSE' }
+VERSION : 1.1
+   STRUCT 
+      Header : Struct
+         ID : Byte;   // Message ID Constant value for this message, Propose 95, (ASC 94)
+         Index : Byte;   // Index number 0-255
+         First_ROS : Byte;   // Number of First ROS station (1)
+         Last_ROS : Byte;   // Number of Last ROS station (7)
+         First_area : Byte;   // Number of first area
+         Last_area : Byte;   // Number of last area
+         MSG_Counter : Byte;   // Message counter increase by 1 on each sent message
+         aRTG_number : Byte;   // Number of aRTG in system
+      END_STRUCT;
+      ROS : Array[1..8] of Struct
+         CRANE_NUMBER : Byte;   // Number of crane where ROS has been connected 1-20
+         Spare_9 : Byte;   // Spare Lane number
+         WIND_SPEED : Byte;   // Wind Speed (m/s)
+         Block_NUMBER : Byte;   // Block where crane is operating
+         from_ros1 : Struct
+            INSTRUCTION : Int;   // Instruction number (0=No instruction)
+            CONTAINER_SIZE : Byte;
+            CONTAINER_POSITION : Byte;   // Container position on truck
+            CONTAINER_ID00 : Char;   // container_ID 1
+            CONTAINER_ID01 : Char;   // container_ID 2
+            CONTAINER_ID02 : Char;   // container_ID 3
+            CONTAINER_ID03 : Char;   // container_ID 4
+            CONTAINER_ID04 : Char;   // container_ID 5
+            CONTAINER_ID05 : Char;   // container_ID 6
+            CONTAINER_ID06 : Char;   // container_ID 7
+            CONTAINER_ID07 : Char;   // container_ID 8
+            CONTAINER_ID08 : Char;   // container_ID 9
+            CONTAINER_ID09 : Char;   // container_ID 10
+            CONTAINER_ID10 : Char;   // container_ID 11
+            CONTAINER_ID11 : Char;   // container_ID 12
+            CONTAINER_ID12 : Char;   // container_ID 13
+            CONTAINER_ID13 : Char;   // container_ID 14
+            CONTAINER_ID14 : Char;   // container_ID 15
+            CONTAINER_ID15 : Char;   // container_ID 16
+            TRUCK_ID00 : Char;   // Truck ID 1st char
+            TRUCK_ID01 : Char;   // Truck ID 2
+            TRUCK_ID02 : Char;   // Truck ID 3
+            TRUCK_ID03 : Char;   // Truck ID 4
+            TRUCK_ID04 : Char;   // Truck ID 5
+            TRUCK_ID05 : Char;   // Truck ID 6
+            TRUCK_ID06 : Char;   // Truck ID 7
+            TRUCK_ID07 : Char;   // Truck ID 8
+            TRUCK_ID08 : Char;   // Truck ID 9
+            TRUCK_ID09 : Char;   // Truck ID 10
+            TRUCK_ID10 : Char;   // Truck ID 11
+            TRUCK_ID11 : Char;   // Truck ID 12
+            TRUCK_ID12 : Char;   // Truck ID 13
+            TRUCK_ID13 : Char;   // Truck ID 14
+            TRUCK_ID14 : Char;   // Truck ID 15
+            TRUCK_ID15 : Char;   // Truck ID 16
+         END_STRUCT;
+         TRUCK_TRAILER_LENGTH : Byte;   // Trailers length
+         PAN : Byte;   // Trolley / Yard Camera Pan Speed   (max left DIR3 = 255, center = 128, max right
+         TILT : Byte;   // Trolley / Yard Camera Tilt Speed  (max frwrd DIR1 = 255, cntr = 128, max rev DI
+         SCREEN_1 : Byte;   // Currently displayed view on screen 1
+         SCREEN_2 : Byte;   // Currently displayed view on screen 2
+         SPARE23 : Byte;
+         notused_54_0 : Bool;   // Call to served truck driver booth
+         notused_54_1 : Bool;   // Call to area
+         DISCONNECT : Bool;   // Call_Disconnection
+         ZOOM_IN : Bool;
+         ZOOM_OUT : Bool;
+         CAMERA_SELECTION : Bool;   // 0=Trolley Camera selected, 1=Yard Camera selected (Pan / Tilt / Zoom)
+         ASC_Entry : Bool;   // Entry side selection in gantry movement slider
+         ASC_Exit : Bool;   // Exit selection in gantry movement slider
+         CAMERA_CONTROL : Bool;   // 0 = No camera controls nor booth calls, 1 = controls for camera and booth call
+         CALL_TRUCK_LANE : Bool;   // Call to trucklane
+         notused_55_2 : Bool;   // spare
+         notused_55_3 : Bool;   // spare
+         notused_55_4 : Bool;   // spare
+         notused_55_5 : Bool;   // spare
+         notused_55_6 : Bool;   // spare
+         notused_55_7 : Bool;   // spare
+         FAULT : Byte;   // Fault (0=No Fault)
+         LOAD_WEIGHT : Byte;   // Load weight (tons)
+         TRIM_ANGLE : Byte;   // Spreader trim angle (0.1 degree, 128=0)
+         SKEW_ANGLE : Byte;   // Spreader skew angle (0.1 degree, 128=0)
+         MICRO_MOVE_G : Byte;   // Micro move Gantry direction (Spare)
+         MICRO_MOVE_T : Byte;   // Micro move Trolley direction (Spare)
+         HOIST_HEIGHT : Real;   // Hoist height (resolution 0.1m)
+         TROLLEY_POSITION : Real;   // Trolley position (resolution 0.1m)
+         Entry_GANTRY_POSITION : Real;   // Entry_Gantry_Position (resolution 0.1m)
+         Exit_GANTRY_POSITION : Real;   // Exit_Gantry_Position (resolution 0.1m)
+         bool_info : Struct
+            LOCKED : Bool;   // Twistlocks locked
+            UNLOCKED : Bool;   // Twistlocks not locked
+            LANDED : Bool;   // Spreader landed
+            SPREADER_20 : Bool;   // Spreader_20
+            SPREADER_40 : Bool;   // Spreader_40
+            SPREADER_45 : Bool;   // Spreader_45
+            notused_78_6 : Bool;   // spare
+            notused_78_7 : Bool;   // spare
+            Traffic_lights_Left : Bool;   // Truck guiding, truck needs to go forward
+            Traffic_lights_Center : Bool;   // Truck guiding, truck at center
+            Traffic_lights_Right : Bool;   // Truck guiding, truck needs to reverse
+            Truck_at_left : Bool;   // Truck at left indication from required position
+            Truck_at_right : Bool;   // Truck at right indication from required position
+            notused_79_5 : Bool;   // spare
+            notused_79_6 : Bool;   // spare
+            notused_79_7 : Bool;   // spare
+            HOIST_UP : Bool;
+            HOIST_UP_FAULT : Bool;
+            HOIST_DOWN : Bool;
+            HOIST_DOWN_FAULT : Bool;
+            TROLLEY_FORWARD : Bool;
+            TROLLEY_FORWARD_FAULT : Bool;
+            TROLLEY_REVERSE : Bool;
+            TROLLEY_REVERSE_FAULT : Bool;
+            GANTRY_FORWARD : Bool;
+            GANTRY_FORWARD_FAULT : Bool;
+            GANTRY_REVERSE : Bool;
+            GANTRY_REVERSE_FAULT : Bool;
+            notused_81_4 : Bool;   // spare
+            notused_81_5 : Bool;   // spare
+            notused_81_6 : Bool;   // spare
+            notused_81_7 : Bool;   // spare
+            notused_82_0 : Bool;   // Reserved lane 1 occupied
+            notused_82_1 : Bool;   // Reserved lane 1 occupied
+            notused_82_2 : Bool;   // Reserved lane 1 occupied
+            notused_82_3 : Bool;   // Reserved lane 1 occupied
+            notused_82_4 : Bool;   // Reserved lane 1 occupied
+            Target_truck_lane : Bool;   // Target truck lane
+            notused_82_6 : Bool;
+            notused_82_7 : Bool;
+            notused_83_0 : Bool;
+            notused_83_1 : Bool;
+            notused_83_2 : Bool;
+            notused_83_3 : Bool;
+            notused_83_4 : Bool;
+            notused_83_5 : Bool;
+            notused_83_6 : Bool;
+            notused_83_7 : Bool;
+         END_STRUCT;
+         ENTRY_ARTG_NR : Byte;   // Gantry slider, ENTRY side ARTG number
+         EXIT_ARTG_NR : Byte;   // Gantry slider, EXIT side ARTG number
+         MAN_45ft_TARGET_TROLLEY : Byte;   // Trolley Lane target for manual 45ft
+         MAN_45ft_TARGET_HOIST : Byte;   // Hoist Lane target for manual 45ft
+         SPARE_88 : Int;   // Spare
+         SPARE_90 : Int;   // Spare
+         SPARE_92 : Int;   // Spare
+         Target_Pos : Struct
+            TARGET_POS_CHAR1 : Char;   // Target BLOCK
+            TARGET_POS_CHAR2 : Char;   // Target BLOCK
+            TARGET_POS_CHAR3 : Char;   // Target BLOCK
+            TARGET_POS_CHAR4 : Char;   // Target ROW
+            TARGET_POS_CHAR5 : Char;   // Target ROW
+            TARGET_POS_CHAR6 : Char;   // Target ROW
+            TARGET_POS_CHAR7 : Char;   // Target BAY
+            TARGET_POS_CHAR8 : Char;   // Target BAY
+            TARGET_POS_CHAR9 : Char;   // Target BAY
+            TARGET_POS_CHAR10 : Char;   // Target TIER
+            TARGET_POS_CHAR11 : Char;   // Target TIER
+            TARGET_POS_CHAR12 : Char;   // Target TIER
+            CURRENT_POS_CHAR1 : Char;   // Current position BLOCK
+            CURRENT_POS_CHAR2 : Char;   // Current position BLOCK
+            CURRENT_POS_CHAR3 : Char;   // Current position BLOCK
+            CURRENT_POS_CHAR4 : Char;   // Current position ROW
+            CURRENT_POS_CHAR5 : Char;   // Current position ROW
+            CURRENT_POS_CHAR6 : Char;   // Current position ROW
+            CURRENT_POS_CHAR7 : Char;   // Current position BAY
+            CURRENT_POS_CHAR8 : Char;   // Current position BAY
+            CURRENT_POS_CHAR9 : Char;   // Current position BAY
+            CURRENT_POS_CHAR10 : Char;   // Current position TIER
+            CURRENT_POS_CHAR11 : Char;   // Current position TIER
+            CURRENT_POS_CHAR12 : Char;   // Current position TIER
+         END_STRUCT;
+         Aim_reticle : Struct
+            SPR_DIFF_TO_IDEAL_ACT : Bool;   // Spreader difference to ideal position (view active, 0/1)
+            DIST_TO_CONTACT_ACT : Bool;   // Spreader/container distance to the contact (view active, 0/1)
+            notused_118_2 : Bool;
+            notused_118_3 : Bool;
+            notused_118_4 : Bool;
+            notused_118_5 : Bool;
+            notused_118_6 : Bool;
+            notused_118_7 : Bool;
+            notused_119_0 : Bool;
+            notused_119_1 : Bool;
+            notused_119_2 : Bool;
+            notused_119_3 : Bool;
+            notused_119_4 : Bool;
+            notused_119_5 : Bool;
+            notused_119_6 : Bool;
+            notused_119_7 : Bool;
+            SPR_DIFF_TO_IDEAL_GANT : Int;   // Spreader difference to ideal position (gantry direction, [mm])
+            SPR_DIFF_TO_IDEAL_TROL : Int;   // Spreader difference to ideal position (trolley direction, [mm])
+            SPR_DIFF_TO_IDEAL_SKEW : Int;   // Spreader difference to ideal position (skew, [mdeg])
+            DIST_TO_CONTACT : Real;   // Spreader/container distance to the contact ([m])
+         END_STRUCT;
+         OPERATOR_ID : Int;   // Operator ID (0 = view not active)
+         NEW_SPARE_1 : Int;
+         NEW_SPARE_2 : Int;
+         NEW_SPARE_3 : Int;
+         NEW_SPARE_4 : Int;
+         NEW_SPARE_5 : Int;
+         NEW_SPARE_6 : Int;
+         NEW_SPARE_7 : Int;
+         NEW_SPARE_8 : Int;
+         NEW_SPARE_9 : Int;
+         NEW_SPARE_10 : Int;
+         NEW_SPARE_11 : Int;
+         NEW_SPARE_12 : Int;
+         NEW_SPARE_13 : Int;
+         NEW_SPARE_14 : Int;
+         NEW_SPARE_15 : Int;
+         NEW_SPARE_16 : Int;
+         NEW_SPARE_17 : Int;
+         NEW_SPARE_18 : Int;
+         NEW_SPARE_19 : Int;
+         NEW_SPARE_20 : Int;
+         NEW_SPARE_21 : Int;
+         NEW_SPARE_22 : Int;
+         NEW_SPARE_23 : Int;
+         NEW_SPARE_24 : Int;
+         NEW_SPARE_25 : Int;
+      END_STRUCT;
+      AREA : Array[1..11] of Struct
+         Entry_craneNR : Byte;   // Entry crane number in block #
+         Exit_craneNR : Byte;   // Exit crane number in block #
+         notused_1110_0 : Bool;   // Res Prewssuremat 1
+         notused_1110_1 : Bool;   // Res Prewssuremat 2
+         notused_1110_2 : Bool;   // Res Prewssuremat 3
+         notused_1110_3 : Bool;   // Res Prewssuremat 4
+         notused_1110_4 : Bool;   // Res Prewssuremat 5
+         Entry_gate_state : Bool;   // Entry gate status, 1 = open
+         Exit_gate_state : Bool;   // Exit gate status, 1 = open
+         notused_1110_7 : Bool;
+         Gate_light_status : Bool;   // Gate_light_status, 1 = lights on
+         notused_1111_1 : Bool;
+         notused_1111_2 : Bool;
+         notused_1111_3 : Bool;
+         notused_1111_4 : Bool;
+         notused_1111_5 : Bool;
+         notused_1111_6 : Bool;
+         notused_1111_7 : Bool;
+         spare_872 : Int;
+      END_STRUCT;
+   END_STRUCT;
+
+
+BEGIN
+
+END_DATA_BLOCK
+

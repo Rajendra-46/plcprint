@@ -1,0 +1,111 @@
+﻿DATA_BLOCK "A/V310 Server --> CPLC"
+{ S7_Optimized_Access := 'FALSE' }
+VERSION : 1.1
+   STRUCT 
+      HEADER : Struct
+         ID : Byte;   // Message ID Constant value for this message, Propose 95, (ASC 94)
+         Spare1 : Byte;   // spare
+         Index : Int;   // Index number (0-255)
+         MSG_Counter : Byte;   // Message counter increase by 1 on each sent message
+         Spare3 : Byte;   // spare
+         AUDIO_SERVER_OK : Bool;   // Alphacom server OK DBX6.0
+         notused_6_1 : Bool;   // spare
+         notused_6_2 : Bool;   // spare
+         notused_6_3 : Bool;   // spare
+         notused_6_4 : Bool;   // spare
+         notused_6_5 : Bool;   // spare
+         notused_6_6 : Bool;   // spare
+         notused_6_7 : Bool;   // spare
+         SV_1_CLIENT_OK : Bool;   // Supervisor 1 client OK
+         SV_1_AUDIO_CLIENT_OK : Bool;   // Supervisor 1 audio client OK
+         notused_7_2 : Bool;   // spare
+         notused_7_3 : Bool;   // spare
+         notused_7_4 : Bool;   // spare
+         notused_7_5 : Bool;   // spare
+         notused_7_6 : Bool;   // spare
+         notused_7_7 : Bool;   // spare
+      END_STRUCT;
+      ROS : Array[1..10] of Struct
+         CRANE : Byte;   // Number of crane where ROS has been connected
+         LANE : Byte;   // Number of lane where crane is operating (0=Crane is not operating at lanes)
+         VIDEO_OK : Bool;   // ROS client OK
+         LANE_INTERCOM_CONN : Bool;   // ROS connected to lane Intercom
+         notused_10_2 : Bool;   // ROS connected to Loudspeaker
+         CRANE_INTERCOM_CONN : Bool;   // ROS connected to crane intercom
+         PHONE_INCOMING : Bool;   // Phone incoming from lane
+         AUDIO_CLIENT_OK : Bool;   // ROS audio client OK
+         notused_10_6 : Bool;   // spare
+         notused_10_7 : Bool;   // spare
+         notused_11_0 : Bool;   // spare
+         notused_11_1 : Bool;   // spare
+         notused_11_2 : Bool;   // spare
+         notused_11_3 : Bool;   // spare
+         notused_11_4 : Bool;   // spare
+         notused_11_5 : Bool;   // spare
+         notused_11_6 : Bool;   // spare
+         notused_11_7 : Bool;   // spare
+         SCREEN_1 : Byte;   // Currently displayed view on screen 1
+         SCREEN_2 : Byte;   // Currently displayed view on screen 2
+         SPARE_14 : Int;   // Spare
+      END_STRUCT;
+      AREA : Array[1..10] of Struct
+         PTZ_Entry_OK : Bool;   // Entry gate PTZ is working OK
+         PTZ_EXIT_OK : Bool;   // Reserve exit gate PTZ is working OK
+         notused_88_2 : Bool;   // Loudspeaker is working OK
+         notused_88_3 : Bool;   // Lane 1 Phone is working OK
+         notused_88_4 : Bool;   // Lane 2 Phone is working OK
+         notused_88_5 : Bool;   // Lane 3 Phone is working OK
+         notused_88_6 : Bool;   // Lane 4 Phone is working OK
+         notused_88_7 : Bool;   // Lane 5 Phone is working OK
+         notused_89_0 : Bool;   // Lane camera 1 is working ok
+         notused_89_1 : Bool;   // Lane camera 2 is working ok
+         notused_89_2 : Bool;   // Lane camera 3 is working ok
+         notused_89_3 : Bool;   // Lane camera 4 is working ok
+         Entry_gate_phone_OK : Bool;   // Entry gate Intercom working ok
+         Exit_gate_phone_OK : Bool;   // Entry gate Intercom working ok
+         notused_89_6 : Bool;   // spare
+         notused_89_7 : Bool;   // spare
+         Open_entry_gate_cmd : Bool;   // Supervisor entry gate open command
+         Open_exit_gate_cmd : Bool;   // Supervisor exit gate open command
+         notused_90_2 : Bool;
+         notused_90_3 : Bool;
+         notused_90_4 : Bool;
+         notused_90_5 : Bool;
+         notused_90_6 : Bool;
+         notused_90_7 : Bool;
+         GATE_LIGHTS_ON_CMD : Bool;   // Entry and exit gate light control ON
+         GATE_LIGHTS_OFF_CMD : Bool;   // Entry and exit gate light control OFF
+         notused_91_2 : Bool;
+         notused_91_3 : Bool;
+         notused_91_4 : Bool;
+         notused_91_5 : Bool;
+         notused_91_6 : Bool;
+         notused_91_7 : Bool;
+         SPARE_92 : Int;
+      END_STRUCT;
+      ARTG : Array[1..20] of Struct
+         ARTG_PTZ_OK : Bool;   // Crane PTZ-dome camera is working OK
+         ARTG_INTCOM_OK : Bool;   // Crane intercom is working OK
+         ARTG_SPR_CAM1 : Bool;   // Crane spreader camera 1 is working OK
+         ARTG_SPR_CAM2 : Bool;   // Crane spreader camera 2 is working OK
+         ARTG_SPR_CAM3 : Bool;   // Crane spreader camera 3 is working OK
+         ARTG_SPR_CAM4 : Bool;   // Crane spreader camera 4 is working OK
+         ARTG_TRCUK_PTZ1 : Bool;   // Crane PTZ-dome lane camera 1 is working OK
+         ARTG_TRCUK_PTZ2 : Bool;   // Crane PTZ-dome lane camera 2 is working OK
+         ARTG_Gantry_CAM1 : Bool;   // Crane gantry camera 1 is working OK
+         ARTG_Gantry_CAM2 : Bool;   // Crane gantry camera 2 is working OK
+         ARTG_Gantry_CAM3 : Bool;   // Crane gantry camera 3 is working OK
+         ARTG_Gantry_CAM4 : Bool;   // Crane gantry camera 4 is working OK
+         ARTG_TRUCK_LSPK_O : Bool;   // Crane lane loadspeaker is working OK
+         notused_149_5 : Bool;
+         notused_149_6 : Bool;
+         notused_149_7 : Bool;
+         SPARE_96 : Int;
+      END_STRUCT;
+   END_STRUCT;
+
+
+BEGIN
+
+END_DATA_BLOCK
+

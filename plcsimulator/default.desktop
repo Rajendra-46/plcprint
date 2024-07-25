@@ -1,0 +1,7 @@
+[Desktop Entry]
+Type=Application
+Name=plcsimulator
+Comment = application
+Exec=plcsimulator
+Icon=default
+Categories=Utility;

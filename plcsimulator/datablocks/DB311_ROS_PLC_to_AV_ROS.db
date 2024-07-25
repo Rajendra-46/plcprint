@@ -1,0 +1,117 @@
+﻿TYPE "_AV_MONITOR_STATUS"
+VERSION : 0.1
+   STRUCT
+      SCREEN_1_VIEW_ID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      SCREEN_2_VIEW_ID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      SCREEN_3_VIEW_ID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      SCREEN_4_VIEW_ID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "_AV Header_SND"
+VERSION : 0.1
+   STRUCT
+      MESSAGE_ID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   //  ROS->AV 1=ROS; 2 =Crane; 3 = Block ||AV->ROS 4 = AV ||5= Crane AV F; 6=Yard AV Fault
+      WATCHDOG { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   // Running watchdog number
+      FIRST_INDEX { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   // 1…N 
+      LAST_INDEX { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   // 1…N 
+      SPARE_1 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      SPARE_2 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      SPARE_3 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+      SPARE_4 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "_AV SUB_HEADER"
+VERSION : 0.1
+   STRUCT
+      "TYPE" { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      ID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      SPARE_5 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      SPARE_6 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "AV DATA ROS"
+VERSION : 0.1
+   STRUCT
+      SELECTION_TYPE { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   // 0 = NONE, 1 = BLOCK, 2 = YARD_CRANE, 4 = STS, 5 = STRADDLE_CARRIER
+      SELECTION_ID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   // Block/crane ID
+      MODE { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   // 0 = NONE, 1 = MROS, 2 = ROS
+      SPARE_7 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      OPERATOR_ID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;   // Operator ID retrieved from the TEAMS/CTMS/panel
+      SPARE_8 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+      AV_FUNCTION_PARAMETER { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   // Parameter related to A/V FUNCTION REQUEST (PUSH_BUTTON_PARAMETER on panel interface document)
+      VOLUME_LEVEL { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   // Sound card volume level (0 = no sound, 255 = max)
+      SPARE_9 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      SPARE_10 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      GENERAL_DATA { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Struct
+         ACTIVE_CONTROLS { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // 0 = no active controls, 1 = active controls
+         CROSSHAIR_VISIBLE { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // 0 = crosshair not visible, 1 = crosshair visible
+         SPARE_11 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_12 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_13 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_14 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_15 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_16 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_17 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_18 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_19 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_20 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_21 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_22 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_23 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_24 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+      END_STRUCT;
+      AV_FUNCTION_REQUESTS { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Struct
+         AV_FUNCTION_1_REQ { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // A/V FUNCTION 1 REQUEST (panel interface document)
+         AV_FUNCTION_2_REQ { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // A/V FUNCTION 2 REQUEST (panel interface document)
+         AV_FUNCTION_3_REQ { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // A/V FUNCTION 3 REQUEST (panel interface document)
+         AV_FUNCTION_4_REQ { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // A/V FUNCTION 4 REQUEST (panel interface document)
+         AV_FUNCTION_5_REQ { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // A/V FUNCTION 5 REQUEST (panel interface document)
+         AV_FUNCTION_6_REQ { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // A/V FUNCTION 6 REQUEST (panel interface document)
+         AV_FUNCTION_7_REQ { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // A/V FUNCTION 7 REQUEST (panel interface document)
+         AV_FUNCTION_8_REQ { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // A/V FUNCTION 8 REQUEST (panel interface document)
+         AV_FUNCTION_9_REQ { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // A/V FUNCTION 9 REQUEST (panel interface document)
+         AV_FUNCTION_10_REQ { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // A/V FUNCTION 10 REQUEST (panel interface document)
+         AV_FUNCTION_11_REQ { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // A/V FUNCTION 11 REQUEST (panel interface document)
+         AV_FUNCTION_12_REQ { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // A/V FUNCTION 12 REQUEST (panel interface document)
+         AV_FUNCTION_13_REQ { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         AV_FUNCTION_14_REQ { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         AV_FUNCTION_15_REQ { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         AV_FUNCTION_16_REQ { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+      END_STRUCT;
+      MONITOR_REQUESTS { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[1..4] of "_AV_MONITOR_STATUS";   // Monitors 1…4 (single monitors splitted to 4 screens)
+      CONTROLLERS { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[1..2] of Struct
+         CONTROLLER_VALUE_1 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   // Mini joystick FWD/BWD (max forward DIR1 = 255, center = 128, max  backward DIR2 = 0)
+         CONTROLLER_VALUE_2 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   // Mini joystick LEFT/RIGHT (max left DIR3 = 255, center = 128, max right DIR4 = 0)
+         BUTTONS { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[1..16] of Bool;
+      END_STRUCT;
+      SPARE_35 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+      SPARE_36 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+      SPARE_37 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+   END_STRUCT;
+
+END_TYPE
+
+DATA_BLOCK "A/V311 CPLC  --> A/V ROS DATA"
+TITLE = ROS information/control to AV
+{ DB_Accessible_From_OPC_UA := 'FALSE' ;
+ S7_Optimized_Access := 'FALSE' }
+VERSION : 2.2
+   STRUCT 
+      HEADER : "_AV Header_SND";
+      CONTROL_PLACES : Array[1..20] of Struct
+         SUB_HEADER { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : "_AV SUB_HEADER";
+         DATA { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : "AV DATA ROS";
+      END_STRUCT;
+   END_STRUCT;
+
+
+BEGIN
+
+END_DATA_BLOCK
+

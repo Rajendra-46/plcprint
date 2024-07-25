@@ -1,0 +1,72 @@
+﻿TYPE "_AV SUB_HEADER"
+VERSION : 0.1
+   STRUCT
+      "TYPE" { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      ID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      SPARE_3 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      SPARE_4 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "AV STATUS BLOCK"
+VERSION : 0.1
+   STRUCT
+      SUB_HEADER { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : "_AV SUB_HEADER";
+      DATA { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Struct
+         CAMERA_FAULT { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Camera component fault (0 = no fault, 1 = fault)
+         AUDIO_FAULT { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Audio component fault (0 = no fault, 1 = fault)
+         SPARE_5 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_6 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_7 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_8 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_9 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_10 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_11 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_12 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_13 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_14 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_15 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_16 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_17 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_18 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_19 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+         SPARE_20 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+         SPARE_21 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+         SPARE_22 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      END_STRUCT;
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "_AV Header_RCV"
+VERSION : 0.1
+   STRUCT
+      MESSAGE_ID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   //  ROS->AV 1=ROS; 2 =Crane; 3 = Block ||AV->ROS 4 = AV ||5= Crane AV F; 6=Yard AV Fault
+      WATCHDOG { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   // Running watchdog number
+      FIRST_INDEX { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   // 1…N 
+      LAST_INDEX { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   // 1…N 
+      VIDEO_SERVER_WD { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   // Running watchdog number (Video Server)
+      AUDIO_SERVER_WD { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   // Running watchdog number (Audio Server)
+      SPARE_1 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+      SPARE_2 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+   END_STRUCT;
+
+END_TYPE
+
+DATA_BLOCK "AV346 ROS DATA FROM SERVER"
+TITLE = Yard Information from AV system
+{ DB_Accessible_From_OPC_UA := 'FALSE' ;
+ S7_Optimized_Access := 'TRUE' }
+VERSION : 2.2
+NON_RETAIN
+   VAR 
+      HEADER { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : "_AV Header_RCV";
+      BLOCKS { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[1..30] of "AV STATUS BLOCK";
+   END_VAR
+
+
+BEGIN
+
+END_DATA_BLOCK
+

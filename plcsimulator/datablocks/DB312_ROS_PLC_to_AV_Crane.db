@@ -1,0 +1,473 @@
+﻿TYPE "_AV Header_SND"
+VERSION : 0.1
+   STRUCT
+      MESSAGE_ID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   //  ROS->AV 1=ROS; 2 =Crane; 3 = Block ||AV->ROS 4 = AV ||5= Crane AV F; 6=Yard AV Fault
+      WATCHDOG { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   // Running watchdog number
+      FIRST_INDEX { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   // 1…N 
+      LAST_INDEX { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   // 1…N 
+      SPARE_1 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      SPARE_2 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      SPARE_3 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+      SPARE_4 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "AV DATA Crane"
+VERSION : 0.1
+   STRUCT
+      HOIST1_POS : Real;   // Hoist master position [mm]
+      HOIST2_POS : Real;   // Hoist slave position [mm]
+      TROLLEY_POS : Real;   // Trolley position [mm]
+      GANTRY1_POS : Real;   // Gantry master position [mm]
+      GANTRY2_POS : Real;   // Gantry slave position [mm]
+      SPREADER_POS : Real;   // Spreader position [mm]
+      NETTO_LOAD : Real;   // Netto load [kg]
+      TOTAL_LOAD : Real;   // Total load [kg]
+      HOIST1_LOAD : Real;   // Hoist master load [kg]
+      HOIST2_LOAD : Real;   // Hoist slave load [kg]
+      LOADCELL1_RAW : Real;   // Loadcell 1 raw
+      LOADCELL2_RAW : Real;   // Loadcell 2 raw
+      LOADCELL3_RAW : Real;   // Loadcell 3 raw
+      LOADCELL4_RAW : Real;   // Loadcell 4 raw
+      AUTO_JOB_ID : Real;   // Auto job id
+      WIND_SPEED : Real;   // Wind Speed
+      POWER_INTERNAL : Bool;   // Power supply internal selected
+      POWER_EXTERNAL : Bool;   // Power supply external selected
+      MAIN_SWITCH : Bool;   // Main switch on
+      MAIN_CONTACTOR : Bool;   // Main contactor on
+      HOIST1_STO : Bool;   // STO
+      HOIST2_STO : Bool;   // STO
+      TROLLEY_STO : Bool;   // STO
+      GANTRY1_STO : Bool;   // STO
+      GANTRY2_STO : Bool;   // STO
+      HOIST1_STO_FB : Bool;   // STO feedback
+      HOIST2_STO_FB : Bool;   // STO feedback
+      TROLLEY_STO_FB : Bool;   // STO feedback
+      GANTRY1_STO_FB : Bool;   // STO feedback
+      GANTRY2_STO_FB : Bool;   // STO feedback
+      CONTROL_STATION1 : Bool;   // Control station 1 active (not used)
+      CONTROL_STATION2 : Bool;   // Control station 2 active (Mobile panel)
+      CONTROL_STATION3 : Bool;   // Control station 3 active (Automatic)
+      CONTROL_STATION4 : Bool;   // Control station 4 active (RCC)
+      CONTROL_STATION5 : Bool;   // Control station 5 active (not used)
+      HOIST1_BRAKE_FB : Bool;   // Hoist master brake feedback
+      HOIST2_BRAKE_FB : Bool;   // Hoist slave brake feedback
+      TROLLEY_BRAKE_FB : Bool;   // Trolley brake feedback
+      GANTRY1_BRAKE_FB : Bool;   // Gantry master brake feedback
+      GANTRY2_BRAKE_FB : Bool;   // Gantry slave brake feedback
+      SPREADER_LANDED : Bool;   // Spreader landed
+      SPREADER_TW_UNLOCKED : Bool;   // Spreader twistlocks unlocked
+      SPREADER_TW_LOCKED : Bool;   // Spreader twistlocks locked
+      SPARE_067_3 : Bool;   // Spare
+      SPARE_067_4 : Bool;   // Spare
+      SPARE_067_5 : Bool;   // Spare
+      SPARE_067_6 : Bool;   // Spare
+      SPARE_067_7 : Bool;   // Spare
+      HOIST1_ACTUAL_SPEED_RAW : Int;   // Speed raw
+      HOIST1_ACTUAL_ACVOLTAGE_RAW : Int;   // Current raw
+      HOIST1_ACTUAL_DCVOLTAGE_RAW : Int;   // DC Voltage raw
+      HOIST1_ACTUAL_ACCURRENT_RAW : Int;   // AC Current raw
+      HOIST1_ACTUAL_DCCURRENT_RAW : Int;   // DC Current raw
+      HOIST1_ACTUAL_POWER_RAW : Int;   // Power raw
+      HOIST1_ACTUAL_FREQUENCY_RAW : Int;   // Frequency raw
+      HOIST1_FAULT_CODE : Int;   // Fault code
+      HOIST1_SETPOINT : Int;   // Speed setpoint raw
+      HOIST1_ADDITIONAL_SETPOINT : Int;   // Speed additional setpoint raw
+      HOIST1_LIMITDIR1_PC10 : Int;   // Limit direction 1
+      HOIST1_LIMITDIR2_PC10 : Int;   // Limit direction 2
+      HOIST1_READY : Bool;   // Ready
+      HOIST1_OPENBRAKE : Bool;   // Open brake
+      HOIST1_DIR1 : Bool;   // Direction 1
+      HOIST1_DIR2 : Bool;   // Direction 2
+      HOIST1_FAULT_ACTIVE : Bool;   // Fault active
+      HOIST1_WARNING_ACTIVE : Bool;   // Warning active
+      SPARE_092_6 : Bool;   // Spare
+      SPARE_092_7 : Bool;   // Spare
+      SPARE_093_0 : Bool;   // Spare
+      SPARE_093_1 : Bool;   // Spare
+      SPARE_093_2 : Bool;   // Spare
+      SPARE_093_3 : Bool;   // Spare
+      SPARE_093_4 : Bool;   // Spare
+      SPARE_093_5 : Bool;   // Spare
+      SPARE_093_6 : Bool;   // Spare
+      SPARE_093_7 : Bool;   // Spare
+      SPARE_094_0 : Bool;   // Spare
+      SPARE_094_1 : Bool;   // Spare
+      SPARE_094_2 : Bool;   // Spare
+      SPARE_094_3 : Bool;   // Spare
+      SPARE_094_4 : Bool;   // Spare
+      SPARE_094_5 : Bool;   // Spare
+      SPARE_094_6 : Bool;   // Spare
+      SPARE_094_7 : Bool;   // Spare
+      SPARE_095_0 : Bool;   // Spare
+      SPARE_095_1 : Bool;   // Spare
+      SPARE_095_2 : Bool;   // Spare
+      SPARE_095_3 : Bool;   // Spare
+      SPARE_095_4 : Bool;   // Spare
+      SPARE_095_5 : Bool;   // Spare
+      SPARE_095_6 : Bool;   // Spare
+      SPARE_095_7 : Bool;   // Spare
+      HOIST2_ACTUAL_SPEED_RAW : Int;   // Speed raw
+      HOIST2_ACTUAL_ACVOLTAGE_RAW : Int;   // Current raw
+      HOIST2_ACTUAL_DCVOLTAGE_RAW : Int;   // DC Voltage raw
+      HOIST2_ACTUAL_ACCURRENT_RAW : Int;   // AC Current raw
+      HOIST2_ACTUAL_DCCURRENT_RAW : Int;   // DC Current raw
+      HOIST2_ACTUAL_POWER_RAW : Int;   // Power raw
+      HOIST2_ACTUAL_FREQUENCY_RAW : Int;   // Frequency raw
+      HOIST2_FAULT_CODE : Int;   // Fault code
+      HOIST2_SETPOINT : Int;   // Speed setpoint raw
+      HOIST2_ADDITIONAL_SETPOINT : Int;   // Speed additional setpoint raw
+      HOIST2_LIMITDIR1_PC10 : Int;   // Limit direction 1
+      HOIST2_LIMITDIR2_PC10 : Int;   // Limit direction 2
+      HOIST2_READY : Bool;   // Ready
+      HOIST2_OPENBRAKE : Bool;   // Open brake
+      HOIST2_DIR1 : Bool;   // Direction 1
+      HOIST2_DIR2 : Bool;   // Direction 2
+      HOIST2_FAULT_ACTIVE : Bool;   // Fault active
+      HOIST2_WARNING_ACTIVE : Bool;   // Warning active
+      SPARE_120_6 : Bool;   // Spare
+      SPARE_120_7 : Bool;   // Spare
+      SPARE_121_0 : Bool;   // Spare
+      SPARE_121_1 : Bool;   // Spare
+      SPARE_121_2 : Bool;   // Spare
+      SPARE_121_3 : Bool;   // Spare
+      SPARE_121_4 : Bool;   // Spare
+      SPARE_121_5 : Bool;   // Spare
+      SPARE_121_6 : Bool;   // Spare
+      SPARE_121_7 : Bool;   // Spare
+      SPARE_122_0 : Bool;   // Spare
+      SPARE_122_1 : Bool;   // Spare
+      SPARE_122_2 : Bool;   // Spare
+      SPARE_122_3 : Bool;   // Spare
+      SPARE_122_4 : Bool;   // Spare
+      SPARE_122_5 : Bool;   // Spare
+      SPARE_122_6 : Bool;   // Spare
+      SPARE_122_7 : Bool;   // Spare
+      SPARE_123_0 : Bool;   // Spare
+      SPARE_123_1 : Bool;   // Spare
+      SPARE_123_2 : Bool;   // Spare
+      SPARE_123_3 : Bool;   // Spare
+      SPARE_123_4 : Bool;   // Spare
+      SPARE_123_5 : Bool;   // Spare
+      SPARE_123_6 : Bool;   // Spare
+      SPARE_123_7 : Bool;   // Spare
+      TROLLEY_ACTUAL_SPEED_RAW : Int;   // Speed raw
+      TROLLEY_ACTUAL_ACVOLTAGE_RAW : Int;   // Current raw
+      TROLLEY_ACTUAL_DCVOLTAGE_RAW : Int;   // DC Voltage raw
+      TROLLEY_ACTUAL_ACCURRENT_RAW : Int;   // AC Current raw
+      TROLLEY_ACTUAL_DCCURRENT_RAW : Int;   // DC Current raw
+      TROLLEY_ACTUAL_POWER_RAW : Int;   // Power raw
+      TROLLEY_ACTUAL_FREQUENCY_RAW : Int;   // Frequency raw
+      TROLLEY_FAULT_CODE : Int;   // Fault code
+      TROLLEY_SETPOINT : Int;   // Speed setpoint raw
+      TROLLEY_ADDITIONAL_SETPOINT : Int;   // Speed additional setpoint raw
+      TROLLEY_LIMITDIR1_PC10 : Int;   // Limit direction 1
+      TROLLEY_LIMITDIR2_PC10 : Int;   // Limit direction 2
+      TROLLEY_READY : Bool;   // Ready
+      TROLLEY_OPENBRAKE : Bool;   // Open brake
+      TROLLEY_DIR1 : Bool;   // Direction 1
+      TROLLEY_DIR2 : Bool;   // Direction 2
+      TROLLEY_FAULT_ACTIVE : Bool;   // Fault active
+      TROLLEY_WARNING_ACTIVE : Bool;   // Warning active
+      SPARE_148_6 : Bool;   // Spare
+      SPARE_148_7 : Bool;   // Spare
+      SPARE_149_0 : Bool;   // Spare
+      SPARE_149_1 : Bool;   // Spare
+      SPARE_149_2 : Bool;   // Spare
+      SPARE_149_3 : Bool;   // Spare
+      SPARE_149_4 : Bool;   // Spare
+      SPARE_149_5 : Bool;   // Spare
+      SPARE_149_6 : Bool;   // Spare
+      SPARE_149_7 : Bool;   // Spare
+      SPARE_150_0 : Bool;   // Spare
+      SPARE_150_1 : Bool;   // Spare
+      SPARE_150_2 : Bool;   // Spare
+      SPARE_150_3 : Bool;   // Spare
+      SPARE_150_4 : Bool;   // Spare
+      SPARE_150_5 : Bool;   // Spare
+      SPARE_150_6 : Bool;   // Spare
+      SPARE_150_7 : Bool;   // Spare
+      SPARE_151_0 : Bool;   // Spare
+      SPARE_151_1 : Bool;   // Spare
+      SPARE_151_2 : Bool;   // Spare
+      SPARE_151_3 : Bool;   // Spare
+      SPARE_151_4 : Bool;   // Spare
+      SPARE_151_5 : Bool;   // Spare
+      SPARE_151_6 : Bool;   // Spare
+      SPARE_151_7 : Bool;   // Spare
+      GANTRY1_ACTUAL_SPEED_RAW : Int;   // Speed raw
+      GANTRY1_ACTUAL_ACVOLTAGE_RAW : Int;   // Current raw
+      GANTRY1_ACTUAL_DCVOLTAGE_RAW : Int;   // DC Voltage raw
+      GANTRY1_ACTUAL_ACCURRENT_RAW : Int;   // AC Current raw
+      GANTRY1_ACTUAL_DCCURRENT_RAW : Int;   // DC Current raw
+      GANTRY1_ACTUAL_POWER_RAW : Int;   // Power raw
+      GANTRY1_ACTUAL_FREQUENCY_RAW : Int;   // Frequency raw
+      GANTRY1_FAULT_CODE : Int;   // Fault code
+      GANTRY1_SETPOINT : Int;   // Speed setpoint raw
+      GANTRY1_ADDITIONAL_SETPOINT : Int;   // Speed additional setpoint raw
+      GANTRY1_LIMITDIR1_PC10 : Int;   // Limit direction 1
+      GANTRY1_LIMITDIR2_PC10 : Int;   // Limit direction 2
+      GANTRY1_READY : Bool;   // Ready
+      GANTRY1_OPENBRAKE : Bool;   // Open brake
+      GANTRY1_DIR1 : Bool;   // Direction 1
+      GANTRY1_DIR2 : Bool;   // Direction 2
+      GANTRY1_FAULT_ACTIVE : Bool;   // Fault active
+      GANTRY1_WARNING_ACTIVE : Bool;   // Warning active
+      SPARE_176_6 : Bool;   // Spare
+      SPARE_176_7 : Bool;   // Spare
+      SPARE_177_0 : Bool;   // Spare
+      SPARE_177_1 : Bool;   // Spare
+      SPARE_177_2 : Bool;   // Spare
+      SPARE_177_3 : Bool;   // Spare
+      SPARE_177_4 : Bool;   // Spare
+      SPARE_177_5 : Bool;   // Spare
+      SPARE_177_6 : Bool;   // Spare
+      SPARE_177_7 : Bool;   // Spare
+      SPARE_178_0 : Bool;   // Spare
+      SPARE_178_1 : Bool;   // Spare
+      SPARE_178_2 : Bool;   // Spare
+      SPARE_178_3 : Bool;   // Spare
+      SPARE_178_4 : Bool;   // Spare
+      SPARE_178_5 : Bool;   // Spare
+      SPARE_178_6 : Bool;   // Spare
+      SPARE_178_7 : Bool;   // Spare
+      SPARE_179_0 : Bool;   // Spare
+      SPARE_179_1 : Bool;   // Spare
+      SPARE_179_2 : Bool;   // Spare
+      SPARE_179_3 : Bool;   // Spare
+      SPARE_179_4 : Bool;   // Spare
+      SPARE_179_5 : Bool;   // Spare
+      SPARE_179_6 : Bool;   // Spare
+      SPARE_179_7 : Bool;   // Spare
+      GANTRY2_ACTUAL_SPEED_RAW : Int;   // Speed raw
+      GANTRY2_ACTUAL_ACVOLTAGE_RAW : Int;   // Current raw
+      GANTRY2_ACTUAL_DCVOLTAGE_RAW : Int;   // DC Voltage raw
+      GANTRY2_ACTUAL_ACCURRENT_RAW : Int;   // AC Current raw
+      GANTRY2_ACTUAL_DCCURRENT_RAW : Int;   // DC Current raw
+      GANTRY2_ACTUAL_POWER_RAW : Int;   // Power raw
+      GANTRY2_ACTUAL_FREQUENCY_RAW : Int;   // Frequency raw
+      GANTRY2_FAULT_CODE : Int;   // Fault code
+      GANTRY2_SETPOINT : Int;   // Speed setpoint raw
+      GANTRY2_ADDITIONAL_SETPOINT : Int;   // Speed additional setpoint raw
+      GANTRY2_LIMITDIR1_PC10 : Int;   // Limit direction 1
+      GANTRY2_LIMITDIR2_PC10 : Int;   // Limit direction 2
+      GANTRY2_READY : Bool;   // Ready
+      GANTRY2_OPENBRAKE : Bool;   // Open brake
+      GANTRY2_DIR1 : Bool;   // Direction 1
+      GANTRY2_DIR2 : Bool;   // Direction 2
+      GANTRY2_FAULT_ACTIVE : Bool;   // Fault active
+      GANTRY2_WARNING_ACTIVE : Bool;   // Warning active
+      SPARE_204_6 : Bool;   // Spare
+      SPARE_204_7 : Bool;   // Spare
+      SPARE_205_0 : Bool;   // Spare
+      SPARE_205_1 : Bool;   // Spare
+      SPARE_205_2 : Bool;   // Spare
+      SPARE_205_3 : Bool;   // Spare
+      SPARE_205_4 : Bool;   // Spare
+      SPARE_205_5 : Bool;   // Spare
+      SPARE_205_6 : Bool;   // Spare
+      SPARE_205_7 : Bool;   // Spare
+      SPARE_206_0 : Bool;   // Spare
+      SPARE_206_1 : Bool;   // Spare
+      SPARE_206_2 : Bool;   // Spare
+      SPARE_206_3 : Bool;   // Spare
+      SPARE_206_4 : Bool;   // Spare
+      SPARE_206_5 : Bool;   // Spare
+      SPARE_206_6 : Bool;   // Spare
+      SPARE_206_7 : Bool;   // Spare
+      SPARE_207_0 : Bool;   // Spare
+      SPARE_207_1 : Bool;   // Spare
+      SPARE_207_2 : Bool;   // Spare
+      SPARE_207_3 : Bool;   // Spare
+      SPARE_207_4 : Bool;   // Spare
+      SPARE_207_5 : Bool;   // Spare
+      SPARE_207_6 : Bool;   // Spare
+      SPARE_207_7 : Bool;   // Spare
+      CABLEREEL_ACTUAL_POWER : Int;   // Power
+      CABLEREEL_FAULT_CODE_CU : Int;   // Fault code control Unit
+      CABLEREEL_FAULT_CODE_PM : Int;   // Fault code power module
+      SPARE_214 : Int;   // Spare
+      CABLEREEL_DIR1 : Bool;   // Direction 1
+      CABLEREEL_DIR2 : Bool;   // Direction 2
+      CABLEREEL_FAULT_ACTIVE_CU : Bool;   // Fault active control unit
+      CABLEREEL_FAULT_ACTIVE_PM : Bool;   // Fault active power module
+      SPARE_216_4 : Bool;   // Spare
+      SPARE_216_5 : Bool;   // Spare
+      SPARE_216_6 : Bool;   // Spare
+      SPARE_216_7 : Bool;   // Spare
+      SPARE_217_0 : Bool;   // Spare
+      SPARE_217_1 : Bool;   // Spare
+      SPARE_217_2 : Bool;   // Spare
+      SPARE_217_3 : Bool;   // Spare
+      SPARE_217_4 : Bool;   // Spare
+      SPARE_217_5 : Bool;   // Spare
+      SPARE_217_6 : Bool;   // Spare
+      SPARE_217_7 : Bool;   // Spare
+      SPARE_218_0 : Bool;   // Spare
+      SPARE_218_1 : Bool;   // Spare
+      SPARE_218_2 : Bool;   // Spare
+      SPARE_218_3 : Bool;   // Spare
+      SPARE_218_4 : Bool;   // Spare
+      SPARE_218_5 : Bool;   // Spare
+      SPARE_218_6 : Bool;   // Spare
+      SPARE_218_7 : Bool;   // Spare
+      SPARE_219_0 : Bool;   // Spare
+      SPARE_219_1 : Bool;   // Spare
+      SPARE_219_2 : Bool;   // Spare
+      SPARE_219_3 : Bool;   // Spare
+      SPARE_219_4 : Bool;   // Spare
+      SPARE_219_5 : Bool;   // Spare
+      SPARE_219_6 : Bool;   // Spare
+      SPARE_219_7 : Bool;   // Spare
+      ALM_ACTUAL_ACCURRENT_RAW : Int;   // AC Current raw
+      ALM_ACTUAL_DCCURRENT_RAW : Int;   // DC Current raw
+      ALM_FAULT_CODE : Int;   // Fault code
+      SPARE_226 : Int;   // Spare
+      ALM_READYTOSWITCHON : Bool;   // Ready to switch on
+      ALM_READY : Bool;   // Ready
+      ALM_FAULT_ACTIVE : Bool;   // Fault active
+      ALM_WARNING_ACTIVE : Bool;   // Warning active
+      ALM_PRELOADEND : Bool;   // Preload end
+      ALM_POWCONTCLOSED : Bool;   // Power contactor closed
+      SPARE_228_6 : Bool;   // Spare
+      SPARE_228_7 : Bool;   // Spare
+      SPARE_229_0 : Bool;   // Spare
+      SPARE_229_1 : Bool;   // Spare
+      SPARE_229_2 : Bool;   // Spare
+      SPARE_229_3 : Bool;   // Spare
+      SPARE_229_4 : Bool;   // Spare
+      SPARE_229_5 : Bool;   // Spare
+      SPARE_229_6 : Bool;   // Spare
+      SPARE_229_7 : Bool;   // Spare
+      SPARE_230_0 : Bool;   // Spare
+      SPARE_230_1 : Bool;   // Spare
+      SPARE_230_2 : Bool;   // Spare
+      SPARE_230_3 : Bool;   // Spare
+      SPARE_230_4 : Bool;   // Spare
+      SPARE_230_5 : Bool;   // Spare
+      SPARE_230_6 : Bool;   // Spare
+      SPARE_230_7 : Bool;   // Spare
+      SPARE_231_0 : Bool;   // Spare
+      SPARE_231_1 : Bool;   // Spare
+      SPARE_231_2 : Bool;   // Spare
+      SPARE_231_3 : Bool;   // Spare
+      SPARE_231_4 : Bool;   // Spare
+      SPARE_231_5 : Bool;   // Spare
+      SPARE_231_6 : Bool;   // Spare
+      SPARE_231_7 : Bool;   // Spare
+      SPREADER_SKEW : Real;   // Spreader skew
+      SPREADER_LATERAL1 : Real;   // Spreader lateral 1
+      SPREADER_LATERAL2 : Real;   // Spreader lateral 2
+      SPREADER_TRAVERSAL : Real;   // Spreader traversal
+      HOIST1_BRAKE_FORCE : Real;   // Hoist Master Brake Force
+      HOIST2_BRAKE_FORCE : Real;   // Hoist Slave Brake Force
+      GANTRY1_VIBRATION : Real;   // Gantry Master Vibration
+      GANTRY2_VIBRATION : Real;   // Gantry Slave Vibration
+      TROLLEY_IGUS_FORCE : Real;   // Trolley IGUS Force
+      HOIST_POSITION_DIFF : Real;   // Hoist position Difference
+      GANTRY_POSITION_DIFF : Real;   // Gantry position Difference
+      HOIST1_STOP_POSITION : Real;   // Hoist master stopping position
+      HOIST2_STOP_POSITION : Real;   // Hoist slave stopping position
+      TROLLEY_STOP_POSITION : Real;   // Trolley stopping position
+      GANTRY1_STOP_POSITION : Real;   // Gantry master stopping position
+      GANTRY2_STOP_POSITION : Real;   // Gantry slave stopping position
+      HOIST_TARGET_POSITION : Real;   // Hoist target position
+      TROLLEY_TARGET_POSITION : Real;   // Trolley target position
+      GANTRY_TARGET_POSITION : Real;   // Gantry target position
+      HOIST1_MOTOR_TEMP : Real;   // Temperature Hoist motor1
+      HOIST2_MOTOR_TEMP : Real;   // Temperature Hoist motor2
+      TROLLEY_MOTOR1_TEMP : Real;   // Temperature Trolley Motor 1
+      TROLLEY_MOTOR2_TEMP : Real;   // Temperature Trolley Motor 2
+      TROLLEY_MOTOR3_TEMP : Real;   // Temperature Trolley Motor 3
+      TROLLEY_MOTOR4_TEMP : Real;   // Temperature Trolley Motor 4
+      GANTRY1_MOTOR1_TEMP : Real;   // Gantry master motor 1 temperature
+      GANTRY1_MOTOR2_TEMP : Real;   // Gantry master motor 2 temperature
+      GANTRY1_MOTOR3_TEMP : Real;   // Gantry master motor 3 temperature
+      GANTRY1_MOTOR5_TEMP : Real;   // Gantry master motor 5 temperature
+      GANTRY1_MOTOR6_TEMP : Real;   // Gantry master motor 6 temperature
+      GANTRY1_MOTOR7_TEMP : Real;   // Gantry master motor 7 temperature
+      GANTRY1_MOTOR8_TEMP : Real;   // Gantry master motor 8 temperature
+      GANTRY2_MOTOR1_TEMP : Real;   // Gantry slave motor 1 temperature
+      GANTRY2_MOTOR2_TEMP : Real;   // Gantry slave motor 2 temperature
+      GANTRY2_MOTOR3_TEMP : Real;   // Gantry slave motor 3 temperature
+      GANTRY2_MOTOR4_TEMP : Real;   // Gantry slave motor 4 temperature
+      GANTRY2_MOTOR6_TEMP : Real;   // Gantry slave motor 6 temperature
+      GANTRY2_MOTOR7_TEMP : Real;   // Gantry slave motor 7 temperature
+      GANTRY2_MOTOR8_TEMP : Real;   // Gantry slave motor 8 temperature
+      SPARE_388 : Real;   // Spare
+      SPARE_392 : Real;   // Spare
+      SPARE_396 : Real;   // Spare
+      SPARE_400 : Real;   // Spare
+      SPARE_404 : Real;   // Spare
+      SPARE_408 : Real;   // Spare
+      SPARE_412 : Real;   // Spare
+      SPARE_416 : Real;   // Spare
+      SPARE_420 : Real;   // Spare
+      MIDDLEWARE_BOOL_SPARE1 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE2 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE3 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE4 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE5 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE6 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE7 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE8 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE9 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE10 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE11 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE12 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE13 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE14 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE15 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE16 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE17 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE18 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE19 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE20 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE21 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE22 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE23 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE24 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE25 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE26 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE27 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE28 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE29 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE30 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE31 : Bool;   // Middleware spare
+      MIDDLEWARE_BOOL_SPARE32 : Bool;   // Middleware spare
+      MIDDLEWARE_REAL_SPARE1 : Real;   // Middleware spare
+      MIDDLEWARE_REAL_SPARE2 : Real;   // Middleware spare
+      MIDDLEWARE_REAL_SPARE3 : Real;   // Middleware spare
+      MIDDLEWARE_REAL_SPARE4 : Real;   // Middleware spare
+      MIDDLEWARE_REAL_SPARE5 : Real;   // Middleware spare
+      MIDDLEWARE_REAL_SPARE6 : Real;   // Middleware spare
+      MIDDLEWARE_REAL_SPARE7 : Real;   // Middleware spare
+      MIDDLEWARE_REAL_SPARE8 : Real;   // Middleware spare
+      MIDDLEWARE_REAL_SPARE9 : Real;   // Middleware spare
+      MIDDLEWARE_REAL_SPARE10 : Real;   // Middleware spare
+      MIDDLEWARE_REAL_SPARE11 : Real;   // Middleware spare
+      MIDDLEWARE_REAL_SPARE12 : Real;   // Middleware spare
+      MIDDLEWARE_REAL_SPARE13 : Real;   // Middleware spare
+      MIDDLEWARE_REAL_SPARE14 : Real;   // Middleware spare
+      MIDDLEWARE_REAL_SPARE15 : Real;   // Middleware spare
+      MIDDLEWARE_REAL_SPARE16 : Real;   // Middleware spare
+   END_STRUCT;
+
+END_TYPE
+
+DATA_BLOCK "A/V312 CPLC  --> A/V CRANE DATA"
+TITLE = Crane information to AV 
+{ DB_Accessible_From_OPC_UA := 'FALSE' ;
+ S7_Optimized_Access := 'FALSE' }
+VERSION : 2.2
+   STRUCT 
+      HEADER : "_AV Header_SND";
+      CRANES : "AV DATA Crane";
+   END_STRUCT;
+
+
+BEGIN
+
+END_DATA_BLOCK
+

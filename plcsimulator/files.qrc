@@ -1,0 +1,14 @@
+<RCC>
+    <qresource prefix="/">
+        <file>DB310.AWL</file>
+        <file>DB311.AWL</file>
+        <file>C_logo_48x48x32.ico</file>
+        <file alias="DB311_ROS_PLC_to_AV_ROS.db">datablocks/DB311_ROS_PLC_to_AV_ROS.db</file>
+        <file alias="DB312_ROS_PLC_to_AV_Crane.db">datablocks/DB312_ROS_PLC_to_AV_Crane.db</file>
+        <file alias="DB313_YARD_PLC_to_AV_Yard.db">datablocks/DB313_YARD_PLC_to_AV_Yard.db</file>
+        <file alias="DB344_AV_to_ROS_PLC_ROS.db">datablocks/DB344_AV_to_ROS_PLC_ROS.db</file>
+        <file alias="DB345_AV_to_ROS_PLC_Crane.db">datablocks/DB345_AV_to_ROS_PLC_Crane.db</file>
+        <file alias="DB346_AV_to_YARD_PLC_Yard.db">datablocks/DB346_AV_to_YARD_PLC_Yard.db</file>
+        <file>settingsIcon.svg</file>
+    </qresource>
+</RCC>

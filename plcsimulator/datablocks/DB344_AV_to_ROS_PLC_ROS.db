@@ -1,0 +1,109 @@
+﻿TYPE "_AV_MONITOR_STATUS"
+VERSION : 0.1
+   STRUCT
+      SCREEN_1_VIEW_ID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      SCREEN_2_VIEW_ID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      SCREEN_3_VIEW_ID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      SCREEN_4_VIEW_ID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "_AV_MONITOR_REQUEST"
+VERSION : 0.1
+   STRUCT
+      SCREEN_1_VIEW_ID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      SCREEN_2_VIEW_ID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      SCREEN_3_VIEW_ID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      SCREEN_4_VIEW_ID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "_AV SUB_HEADER"
+VERSION : 0.1
+   STRUCT
+      "TYPE" { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      ID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      SPARE_3 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      SPARE_4 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "AV STATUS ROS"
+VERSION : 0.1
+   STRUCT
+      SELECTION_TYPE { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   // 0 = NONE, 1 = BLOCK, 2 = YARD_CRANE, 4 = STS, 5 = STRADDLE
+      SELECTION_ID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   // Block/crane ID
+      MODE { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   // 0 = NONE, 1 = MROS, 2 = ROS
+      SPARE_5 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      SPARE_6 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+      SPARE_7 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+      SPARE_8 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      SPARE_9 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      SPARE_10 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      SPARE_11 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;
+      GENERAL_STATUS { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Struct
+         VIDEO_CLIENT_OK { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // ROS client running (0 = not running/watchdog tripped, 1 = running)
+         VIEWS_OK_FOR_CONTROLS { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Views OK for controls (0 = crane controls not allowed, 1 = crane controls allowed)
+         CROSSHAIR_VISIBLE_REQ { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;   // Request for crosshair visibility
+         SPARE_12 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_13 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_14 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_15 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_16 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_17 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_18 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_19 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_20 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_21 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_22 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_23 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+         SPARE_24 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Bool;
+      END_STRUCT;
+      AV_FUNCTION_STATUSES { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[1..16] of Bool;
+      MONITOR_REQUESTS { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[1..4] of "_AV_MONITOR_REQUEST";
+      MONITOR_STATUSES { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[1..4] of "_AV_MONITOR_STATUS";
+      SPARE_25 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+      SPARE_26 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+      SPARE_27 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+      SPARE_28 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+   END_STRUCT;
+
+END_TYPE
+
+TYPE "_AV Header_RCV"
+VERSION : 0.1
+   STRUCT
+      MESSAGE_ID { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   //  ROS->AV 1=ROS; 2 =Crane; 3 = Block ||AV->ROS 4 = AV ||5= Crane AV F; 6=Yard AV Fault
+      WATCHDOG { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   // Running watchdog number
+      FIRST_INDEX { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   // 1…N 
+      LAST_INDEX { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   // 1…N 
+      VIDEO_SERVER_WD { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   // Running watchdog number (Video Server)
+      AUDIO_SERVER_WD { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Byte;   // Running watchdog number (Audio Server)
+      SPARE_1 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+      SPARE_2 { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Int;
+   END_STRUCT;
+
+END_TYPE
+
+DATA_BLOCK "AV344 ROS DATA FROM SERVER"
+TITLE = ROS information from AV
+{ DB_Accessible_From_OPC_UA := 'FALSE' ;
+ S7_Optimized_Access := 'TRUE' }
+VERSION : 2.2
+NON_RETAIN
+   VAR 
+      HEADER { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : "_AV Header_RCV";
+      CONTROL_PLACES { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : Array[1..20] of Struct
+         SUB_HEADER { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : "_AV SUB_HEADER";
+         DATA { ExternalAccessible := 'False'; ExternalVisible := 'False'; ExternalWritable := 'False'} : "AV STATUS ROS";
+      END_STRUCT;
+   END_VAR
+
+
+BEGIN
+
+END_DATA_BLOCK
+
