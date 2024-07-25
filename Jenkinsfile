@@ -1,13 +1,6 @@
 pipeline {
     agent any
-    
     stages {
-        stage('Checkout') {
-            steps {
-                // Checkout code from a Git repository
-                git 'https://github.com/Rajendra-46/plcprint.git'
-            }
-        }
         stage('Build') {
             steps {
                 // Build Maven project
